@@ -24,7 +24,6 @@ def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
-
 class Bird:
     """
     ゲームキャラクター（こうかとん）に関するクラス
@@ -116,8 +115,6 @@ class Bomb:
         screen.blit(self.img, self.rct)
         
 
-
-
 class Beam:
     def __init__(self, bird: Bird):
         """
@@ -137,10 +134,6 @@ class Beam:
         if check_bound(self.rct) == (True, True):
             self.rct.move_ip(self.vx, self.vy)
             screen.blit(self.img, self.rct)
-
-
-
-
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
@@ -191,7 +184,7 @@ def main():
         clock.tick(50)
 
 
-class Score:
+class Score:   #スコアクラスの定義
     def __init__(self):
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体",30)
         self.scr = 0
@@ -235,7 +228,6 @@ class Score:
 
     # Pygameの終了
     pg.quit()
-
 
 if __name__ == "__main__":
     pg.init()

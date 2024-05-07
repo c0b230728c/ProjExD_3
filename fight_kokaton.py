@@ -114,6 +114,8 @@ class Bomb:
             self.vy *= -1
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
+        
+
 
 
 class Beam:
@@ -135,6 +137,9 @@ class Beam:
         if check_bound(self.rct) == (True, True):
             self.rct.move_ip(self.vx, self.vy)
             screen.blit(self.img, self.rct)
+
+
+
 
 
 def main():
@@ -184,6 +189,52 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
+
+
+class Score:
+    def __init__(self):
+        self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体",30)
+        self.scr = 0
+        self.cr = (0, 0, 255)
+        self.img = self.fonto.render("表示させる文字列",0,self.cr)
+        self.position = (100, 100)
+
+    def update(self,screen):
+        self.img = self.fonto.render("スコア: " + str(self.score_value), True, self.color)
+        screen.blit(self.img, self.position)
+    
+    def main():
+    # Pygameの初期化
+        pg.init()
+    # 画面の設定
+        screen = pg.display.set_mode((800, 600))
+        pg.display.set_caption("Score Display")
+
+    # Scoreインスタンスの生成
+        score = Score()
+
+    # ゲームループ
+        running = True
+        while running:
+        # イベント処理
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    running = False
+
+        # 爆弾を打ち落としたらスコアアップ（ここでは1点ずつ増やすと仮定）
+        # この部分に爆弾を打ち落としたときの処理を追加する
+
+        # スコアを更新して描画
+        score.update()
+        score.draw(screen)
+
+        # 画面更新
+        pg.display.update()
+        if __name__ == "__main__":
+            main()
+
+    # Pygameの終了
+    pg.quit()
 
 
 if __name__ == "__main__":
